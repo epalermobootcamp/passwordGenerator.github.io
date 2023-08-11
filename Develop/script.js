@@ -12,7 +12,8 @@ function generatePassword() {
     prompt("Enter the desired password length: (from 8 to 128)")
   );
 
-  if (isNaN(length) || length <= 7 || length > 128) {
+  // Checks if user entered a string or a number between 8 to 128 or
+  if (isNaN(length) || length < 8 || length > 128) {
     alert("Please enter a valid number between 8-128.");
     return;
   }
@@ -22,11 +23,13 @@ function generatePassword() {
   var useNumbers = confirm("Do you want to include numbers?");
   var useSpecialChars = confirm("Do you want to include special characters?");
 
+  // Validate to confirm user chose at least one criteria
   if (!useUppercase && !useLowercase && !useNumbers && !useSpecialChars) {
     alert("You must select at least one password criteria.");
     return;
   }
 
+  // Declarations of all available characters that can be used
   var uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
   var numberChars = "0123456789";
